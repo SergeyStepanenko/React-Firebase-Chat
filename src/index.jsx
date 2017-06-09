@@ -1,31 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import Header from './Header.jsx'
-import Content from './Content.jsx';
+import Chat from './components/chat.jsx';
 
-render( <AppContainer><Header/></AppContainer>, document.querySelector("#header"));
-
-if (module && module.hot) {
-  module.hot.accept('./Header.jsx', () => {
-    const Header = require('./Header.jsx').default;
-    render(
-      <AppContainer>
-        <Header/>
-      </AppContainer>,
-      document.querySelector("#header")
-    );
-  });
-}
-
-render( <AppContainer><Content/></AppContainer>, document.querySelector("#content"));
+render( <AppContainer><Chat/></AppContainer>, document.querySelector("#content"));
 
 if (module && module.hot) {
-  module.hot.accept('./Content.jsx', () => {
-    const Content = require('./Content.jsx').default;
+  module.hot.accept('./components/chat.jsx', () => {
+    const App = require('./components/chat.jsx').default;
     render(
       <AppContainer>
-        <Content/>
+        <App/>
       </AppContainer>,
       document.querySelector("#content")
     );
