@@ -5,7 +5,6 @@ var loaders = require('./webpack.loaders');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var DashboardPlugin = require('webpack-dashboard/plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = process.env.PORT || "8888";
@@ -19,7 +18,7 @@ loaders.push({
 module.exports = {
   entry: [
     'react-hot-loader/patch',
-    './src/index.jsx', // your app's entry point
+    './src/index.jsx',
   ],
   devtool: process.env.WEBPACK_DEVTOOL || 'eval-source-map',
   output: {
@@ -35,13 +34,9 @@ module.exports = {
   },
   devServer: {
     contentBase: "./public",
-    // do not print bundle build stats
     noInfo: true,
-    // enable HMR
     hot: true,
-    // embed the webpack-dev-server runtime into the bundle
     inline: true,
-    // serve index.html in place of 404 responses to allow HTML5 history
     historyApiFallback: true,
     port: PORT,
     host: HOST
@@ -62,12 +57,5 @@ module.exports = {
         js: [ "bundle.js"],
       }
     }),
-  //   new BrowserSyncPlugin({
-  //     // browse to http://localhost:3000/ during development,
-  //     // ./public directory is being served
-  //     host: 'localhost',
-  //     port: 3000,
-  //     server: { baseDir: ['public'] }
-  // }),
   ]
 };
