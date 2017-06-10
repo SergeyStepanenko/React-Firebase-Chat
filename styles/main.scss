@@ -2,6 +2,7 @@ $default:  "Open Sans";
 
 body {
   background-color: #5195FD;
+  font-size: 70px;
 }
 
 .header,
@@ -24,14 +25,18 @@ body {
 .chat {
 	// display: flex;
 	// align-items: flex-end;
-	// position: fixed;
-	margin: 0 auto;
-	// top: 40px;
-	// bottom: 40px;
-	width: 600px;
+	position: fixed;
+	// margin: 0 auto;
+	top: 40px;
+	bottom: 40px;
+	left: 0px;
+	right: 0px;
+	// width: 600px;
 	// margin-left: 50%;
 	// left: -300px;
-	padding: 40px 0;
+	// padding: 40px 0;
+	overflow-y: scroll;
+	overflow-x: hidden;
 	height: 100%;
 	background-color: #fff;
 }
@@ -52,7 +57,7 @@ body {
 		background-color: #000;
 		color: #fff;
 		border: 0;
-		text-transform: uppercase; 
+		text-transform: uppercase;
 	}
 }
 

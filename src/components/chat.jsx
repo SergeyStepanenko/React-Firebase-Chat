@@ -37,14 +37,18 @@ export default class Chat extends React.Component {
 	}
 
 	sendMessage() {
-		const userMessage = document.getElementById('messageBox').value;
+		const userMessage = document.getElementById('messageBox');
+		const chatBlock = document.querySelector('.chat');
 		const newPostKey = firebase.database().ref().child('posts').push().key; // генерим уникальный id
 
 		firebase.database().ref('messages/' + newPostKey).set({
-			name: 'Федор',
-			message: userMessage,
+			name: 'Сергей',
+			message: userMessage.value,
 			date: Date.now(),
 		});
+
+		userMessage.value = '';
+		chatBlock.scrollTop = chatBlock.scrollHeight;
 	}
 
     render() {
@@ -65,7 +69,7 @@ export default class Chat extends React.Component {
 	            }
 			  </div>
 			  <footer className='footer'>
-				  <input id='messageBox' className='footer__input' placeholder='Напишите сообщение'></input>
+				  <input type='text' id='messageBox' className='footer__input' placeholder='Напишите сообщение'></input>
 				  <button className='footer__send' onClick={this.sendMessage}>
 					  Отправить
 					  {/* <img src={sendBtnImg} alt='' width='20px' height=''></img> */}

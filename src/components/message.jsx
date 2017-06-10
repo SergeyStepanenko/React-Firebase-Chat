@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 
 export default function MessageItem(props) {
     const {senderName, textMessage, sentDate} = props;
