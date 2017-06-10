@@ -140,6 +140,7 @@ body {
 		font-size: 14px;
 		align-self: center;
 		margin-right: 10px;
+		font-weight: bold;
 	}
 	&__senderMessage {
 		text-align: left;
@@ -148,6 +149,7 @@ body {
 	&__senderDate {
 		font-size: 14px;
 		color: #AC8785;
+		margin: 3px;
 
 	}
 }

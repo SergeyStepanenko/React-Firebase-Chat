@@ -8,7 +8,7 @@ const database = firebase.database();
 const rootRef = database.ref('messages');
 let chatBlock = document.querySelector('.chat');
 let FIREBASEDATA = [];
-let userName = document.cookie;
+let userName = 'guest';
 
 export default class Chat extends React.Component {
 	constructor() {
@@ -20,11 +20,6 @@ export default class Chat extends React.Component {
 		this.handleChatEnter = this.handleChatEnter.bind(this);
 		this.handleEnterKey = this.handleEnterKey.bind(this);
 		this.sendMessage = this.sendMessage.bind(this);
-
-		console.log(document.cookie);
-		// if (userName !== undefined) {
-		//
-		// }
 	}
 
 	componentWillMount() {
@@ -73,12 +68,14 @@ export default class Chat extends React.Component {
 		const userMessage = document.getElementById('messageBox');
 		const newPostKey = firebase.database().ref().child('posts').push().key; // генерим уникальный id
 		chatBlock = document.querySelector('.chat');
+		if (userMessage.value !== '') {
+			firebase.database().ref('messages/' + newPostKey).set({
+				name: userName,
+				message: userMessage.value,
+				date: Date.now(),
+			});
+		}
 
-		firebase.database().ref('messages/' + newPostKey).set({
-			name: userName,
-			message: userMessage.value,
-			date: Date.now(),
-		});
 
 		userMessage.value = '';
 
