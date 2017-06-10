@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Login from '../components/login.jsx';
 import '../../styles/index.scss';
 import MessageItem from './message.jsx';
 import getProperDate from '../utils/properDate.js';
@@ -9,8 +8,7 @@ const database = firebase.database();
 const rootRef = database.ref('messages');
 let chatBlock = document.querySelector('.chat');
 let FIREBASEDATA = [];
-let userName = 'Гость';
-
+let userName = document.cookie;
 
 export default class Chat extends React.Component {
 	constructor() {
@@ -20,7 +18,13 @@ export default class Chat extends React.Component {
 			data: [],
 		};
 		this.handleChatEnter = this.handleChatEnter.bind(this);
+		this.handleEnterKey = this.handleEnterKey.bind(this);
 		this.sendMessage = this.sendMessage.bind(this);
+
+		console.log(document.cookie);
+		// if (userName !== undefined) {
+		//
+		// }
 	}
 
 	componentWillMount() {
@@ -51,6 +55,17 @@ export default class Chat extends React.Component {
 
 		if (userName !== '') {
 			container.removeChild(loginPage);
+			document.cookie = userName;
+		}
+	}
+
+	handleEnterKey(e) {
+		if (e.key === 'Enter') {
+			if (e.target.id === 'messageBox') {
+				this.sendMessage();
+			} else if (e.target.id === 'inputUserName') {
+				this.handleChatEnter();
+			}
 		}
 	}
 
@@ -72,17 +87,6 @@ export default class Chat extends React.Component {
 		}, 1)
 	}
 
-	handleEnterKey(e) {
-		if (e.key === 'Enter') {
-			this.sendMessage();
-		}
-	}
-
-	handleEnterWhileLoggingIn(e) {
-		if (e.key === 'Enter') {
-			this.handleChatEnter;
-		}
-	}
 
     render() {
 	    return (
