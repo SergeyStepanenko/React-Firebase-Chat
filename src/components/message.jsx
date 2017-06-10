@@ -8,7 +8,7 @@ export default function MessageItem(props) {
 		  <div className='message__senderName'>
 			  {senderName}
 		  </div>
-		  <div className='message__wrapper'>
+		  <div className='message__block'>
 			  <div className='message__senderMessage'>
 				  {textMessage}
 			  </div>
