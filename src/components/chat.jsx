@@ -95,7 +95,9 @@ export default class Chat extends React.Component {
 					  <button className='login-page__send' onClick={this.handleChatEnter}>Войти в чат</button>
 				  </div>
 			  </div>
-			  <h2 className='header'>Welcome to React Chat App</h2>
+			  <header>
+				  <h2 className='header'>Welcome to React Chat App</h2>
+			  </header>
 			  <div className='chat'>
 				  {
 			        this.state.data.map((el, index) => {
@@ -117,4 +119,17 @@ export default class Chat extends React.Component {
 			  </footer>
 		  </div>
 	    )}
+}
+
+let input = [5, 20, 40, 55, 9];
+let x = 18;
+let closest;
+let previous = 0;
+
+for (let i = 0; i > input.length; i++) {
+	if (Math.abs(x - input[i]) < Math.abs(x - previous)) {
+		closest = input[i]
+	}
+
+	previous = input[i];
 }
