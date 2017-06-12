@@ -31,5 +31,5 @@ export default function getProperDate(seconds) {
 	}
 
 
-    return day + month + date.getFullYear() + ' ' + hours + ':' + minutes;
+    return day + ' ' + month + ' ' + date.getFullYear() + ' ' + hours + ':' + minutes;
 }
