@@ -120,16 +120,3 @@ export default class Chat extends React.Component {
 		  </div>
 	    )}
 }
-
-let input = [5, 20, 40, 55, 9];
-let x = 18;
-let closest;
-let previous = 0;
-
-for (let i = 0; i > input.length; i++) {
-	if (Math.abs(x - input[i]) < Math.abs(x - previous)) {
-		closest = input[i]
-	}
-
-	previous = input[i];
-}
